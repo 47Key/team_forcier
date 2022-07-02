@@ -1,20 +1,8 @@
 import fetch from 'node-fetch';
 import React from 'react';
+import './pull_data.css';
 import { FaBed, FaBath } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-export const getStaticProps = async (props) => {
-  const response = await fetch(`https://key47-51636.firebaseio.com/Properties/${props.id}.json`);
-  const data = await response.text();
-  const parsedData = JSON.parse(data);
-  const base = parsedData.records[0];
-
-  return {
-    props: { data: base }
-  };
-}
-
-
 
 export default class Properties extends React.Component {
   constructor(props) {
@@ -31,7 +19,10 @@ export default class Properties extends React.Component {
   }
 /* eslint-disable */
   async componentDidMount() {
-    const base = getStaticProps(this.state.id);
+    const response = await fetch(`https://key47-51636.firebaseio.com/Properties/${this.state.id}.json`);
+    const data = await response.text();
+    const parsedData = JSON.parse(data);
+    const base = parsedData.records[0];
     const price = base.Price;
     const priceAfterFormat = 
         new Intl.NumberFormat('en-US', { 

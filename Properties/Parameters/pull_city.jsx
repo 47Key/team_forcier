@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-// import { FaBed, FaBath } from 'react-icons/fa';
+import fetch from 'node-fetch';
+import React, { useState, useEffect } from 'react';
+import '../pull_data.css';
+import { FaBed, FaBath } from 'react-icons/fa';
+/*eslint-disable*/
+const PropertiesByCity = (props) => {
+  const [getProperties, setProperties] = useState([]);
+  const properties = async (props) => {
+    const response = await fetch(`https://key47-51636.firebaseio.com/Properties.json?orderBy="/records/0/Address/City"&equalTo="${props.city}"`);
+    const getData = await response.text();
+    const parsedData = JSON.parse(getData);
+    const keyName = Object.entries(parsedData);
+    setProperties(keyName);
+  };
+  useEffect(() => {
+    properties(props);
+  }, []);
 
-export const getStaticProps = async () => {
-  const res = await fetch(`https://key47-51636.firebaseio.com/Properties.json?orderBy="/records/0/Address/City"&equalTo="Windsor"`);
-  const getData = await res.text();
-  const parsedData = JSON.parse(getData);
-  const keyName = Object.entries(parsedData);
-  console.log([keyName]);
-
-  return {
-    props: { properties: [keyName] }
-  }
-
-}
-
-const PropertiesByCity = ({ properties }) => {
-  console.log(properties);
   return (
     <div className="map__wrapper">
-      {properties.map(([key, value]) => {
+      {getProperties.map(([key, value]) => {
         try {
           return (
             <div key={key} className="listing__wrapper">

@@ -1,6 +1,7 @@
 import { useEffect, useState, React } from 'react';
-import PropertiesByCity from '../pull_city';
+import PropertiesByCity from './Parameters/pull_city';
 import Properties from './pull_data';
+import './properties.css';
 /* eslint-disable */
 export default function PropertyGrid() {
   const [city, setCity] = useState('Default');
