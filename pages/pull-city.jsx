@@ -1,24 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/Home.module.css'
-
-export const getStaticProps = async () => {
-  const response = await fetch(`https://key47-51636.firebaseio.com/Properties.json?orderBy="/records/0/Address/City"&equalTo="Tecumseh"`);
-  const getData = await response.text();
-  const parsedData = JSON.parse(getData);
-  const keyName = Object.entries(parsedData);
-  
-  return {
-    props: { properties: keyName },
-    revalidate: 10,
-  }
-}
+import styles from '../styles/Properties.module.css';
 
 const PropertiesByCity = ({ properties }) => {
   const [getProperties, setProperties] = useState([]);
   useEffect(() => {
     setProperties(properties);
   })
-  console.log(getProperties);
   return (
     <div className={styles.mapwrap}>
       {getProperties.map(([key, value]) => {
@@ -39,7 +26,7 @@ const PropertiesByCity = ({ properties }) => {
                   {value.records[0].Building.BedroomsTotal}&nbsp;
                   <p className={styles.listinfobbbottom}>Bedrooms</p>
                 </div>
-                <div key={key} className={styles.listinfobb}>
+                <div className={styles.listinfobb}>
                   {value.records[0].Building.BathroomTotal}&nbsp;
                   <p className={styles.listinfobbbottom}>Bathrooms</p>
                 </div>
@@ -47,7 +34,6 @@ const PropertiesByCity = ({ properties }) => {
             </div>
           );
         } catch (error) {
-          console.log(error);
           return (<p> non </p>)
         }
       }
