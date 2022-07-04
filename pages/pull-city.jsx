@@ -26,7 +26,7 @@ const PropertiesByCity = ({ properties }) => {
                 <div className={styles.listinfobot}>
                   <h1>{value.records[0].Address.StreetNumber} {value.records[0].Address.StreetName}</h1>
                 </div>
-                <div>
+                <div className={styles.listinfowrap}>
                   <div className={styles.listinfobb}>
                     <h1>{value.records[0].Building.BedroomsTotal}</h1>
                     <p>Bedrooms</p>
