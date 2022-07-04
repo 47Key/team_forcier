@@ -14,27 +14,33 @@ const PropertiesByCity = ({ properties }) => {
             <div key={key} className={styles.listwrap}>
               <div className={styles.propphoto}>
                 <img src={value.records[0].Photo.PropertyPhoto[0].PhotoURL} />
-                <h1>{new Intl.NumberFormat('en-US', { 
-                  style: 'currency', 
-                  currency: 'USD' 
-                }).format(value.records[0].Price).slice(0, -3)}</h1>
-                <h1>{value.records[0].Address.StreetNumber} {value.records[0].Address.StreetName}</h1>
-                <p>{value.records[0].Address.City}</p>
               </div>
               <div className={styles.listinfo}>
-                <div className={styles.listinfobb}>
-                  {value.records[0].Building.BedroomsTotal}&nbsp;
-                  <p className={styles.listinfobbbottom}>Bedrooms</p>
+                <div className={styles.listinfotop}>
+                  <p>{value.records[0].Address.City}</p>
+                  <h1>{new Intl.NumberFormat('en-US', { 
+                  style: 'currency', 
+                  currency: 'USD' 
+                  }).format(value.records[0].Price).slice(0, -3)}</h1>
                 </div>
-                <div className={styles.listinfobb}>
-                  {value.records[0].Building.BathroomTotal}&nbsp;
-                  <p className={styles.listinfobbbottom}>Bathrooms</p>
+                <div className={styles.listinfobot}>
+                  <h1>{value.records[0].Address.StreetNumber} {value.records[0].Address.StreetName}</h1>
+                </div>
+                <div>
+                  <div className={styles.listinfobb}>
+                    <h1>{value.records[0].Building.BedroomsTotal}</h1>
+                    <p>Bedrooms</p>
+                  </div>
+                  <div className={styles.listinfobb}>
+                    <h1>{value.records[0].Building.BathroomTotal}</h1>
+                    <p>Bathrooms</p>
+                  </div>
                 </div>
               </div>
             </div>
           );
         } catch (error) {
-          return (<p> non </p>)
+          return (<p> </p>)
         }
       }
     )}
