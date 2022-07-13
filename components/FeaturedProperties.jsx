@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Properties.module.css';
+import Image from 'next/image'
 
-const PropertiesByCity = ({ properties }) => {
+const FeaturedProperties = ({ properties }) => {
   const [getProperties, setProperties] = useState([]);
   useEffect(() => {
     setProperties(properties);
   }, [])
   return (
-    <div className={styles.mapwrap}>
+    <div className={styles.featuredmapwrap}>
+      <div className={styles.featuredproptitle}>
+        <h1>FEATURED PROPERTIES</h1>
+      </div>
       {getProperties.map(([key, value]) => {
         try {
           return (
-            <div key={key} className={styles.listwrap}>
-              <div className={styles.propphoto}>
-                <img src={value.photo} />
+            <div key={key} className={styles.featuredlistwrap}>
+              <div className={styles.featuredpropphoto}>
+                {/* <img src={value.mainPhoto} /> */}
+                <Image src={value.mainPhoto} width={1000} height={400} />
               </div>
-              <div className={styles.listinfo}>
+              <div className={styles.featuredlistinfo}>
                 <div className={styles.listinfotop}>
                   <p>{value.city}</p>
                   <h1>{new Intl.NumberFormat('en-US', { 
@@ -48,4 +53,4 @@ const PropertiesByCity = ({ properties }) => {
   );
 };
 
-export default PropertiesByCity;
+export default FeaturedProperties;

@@ -1,4 +1,126 @@
 /*/////////////////////////////////*/
+/*////// FEATURED PROPERTIES //////*/
+/*/////////////////////////////////*/
+
+.featuredmapwrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.featuredproptitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font: var(--font-main);
+  font-size: 20px;
+  margin-bottom: -80px;
+}
+
+.featuredlistwrap {
+  display: flexbox;
+  height: 50%;
+  width: 75%;
+  margin: 10px;
+  flex-direction: row;
+  text-align: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  font-size: 20px;
+}
+
+
+.listwrap:hover {
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.5);
+}
+
+.featuredpropphoto {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 400px; */
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+/* .propphoto img {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+} */
+
+.featuredlistinfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.listinfotop {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listinfotop p {
+  font-size: medium;
+  margin-top: -5px;
+}
+
+.listinfobot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: -15px;
+}
+
+.listinfowrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px;
+  padding: 0px;
+}
+
+.listinfobb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.listinfobb h1 {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0px;
+  margin: 0px;
+}
+
+.listinfobb p {
+  margin-top: -5px;
+}
+
+
+
+
+
+/*/////////////////////////////////*/
 /*///////// PROPERTY GRID /////////*/
 /*/////////////////////////////////*/
 .propwrap {
@@ -41,10 +163,11 @@
 }
 
 .propoptbutton {
-    width: 100px;
+    width: 120px;
     height: 50px;
     flex-wrap: wrap;
-    background-color: #fafafa;
+    background-color: #e41935;
+    color: #ffffff;
     margin: 20px;
     text-align: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -95,10 +218,11 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
   }
   
   .listwrap:hover {
