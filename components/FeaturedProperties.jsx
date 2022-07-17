@@ -23,7 +23,7 @@ const FeaturedProperties = ({ properties }) => {
               <div className={styles.featuredlistinfo}>
                 <div className={styles.featuredlistinfotop}>
                   <p>{value.city}</p>
-                  <h1>{new Intl.NumberFormat('en-US', { 
+                  <h1 id="price">{new Intl.NumberFormat('en-US', { 
                   style: 'currency', 
                   currency: 'USD' 
                   }).format(value.price).slice(0, -3)}</h1>
