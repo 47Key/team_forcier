@@ -41,6 +41,9 @@ const FeaturedProperties = ({ properties }) => {
                     <p>Bathrooms</p>
                   </div>
                 </div>
+                <div className={styles.moreinfobuttonwrap}>
+                  <button className={styles.moreinfobutton}>More Info</button>
+                </div>
               </div>
             </div>
           );

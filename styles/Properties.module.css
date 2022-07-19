@@ -20,7 +20,8 @@
   justify-content: flex-start;
   text-align: center;
   font-size: 20px;
-  margin-bottom: -80px;
+  margin-top: 20px;
+  /* margin-bottom: -80px; */
 }
 
 .featuredlistwrap {
@@ -52,7 +53,7 @@
 }
 
 .featuredpropphoto img {
-  width: 100%;
+  width: 900px;
   height: 440px;
   object-fit: cover;
 }
@@ -100,7 +101,7 @@
   justify-content: space-between;
   align-items: center;
   width: 200px;
-  top: 20px;
+  top: 10px;
   left: 25px;
   z-index: 3;
 }
@@ -124,6 +125,22 @@
   margin-top: -5px;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.moreinfobuttonwrap {
+  position: relative;
+  top: 400px;
+  right: 80px;
+}
+
+.moreinfobutton {
+  background: #e41935;
+  color: #ffffff;
+  padding: 5px;
+  font: var(--font-card);
+  font-weight: 800;
+  font-size: 16px;
+  transition: 0.5s;
 }
 
 @media only screen and (max-width: 1000px) {
