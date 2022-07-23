@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import NavBar from '../components/navbar'
-import Hero from '../components/hero'
+import NavBar from '../containers/navbar'
+import Hero from '../containers/hero'
+import FeaturedProperties from '../containers/FeaturedProperties'
 import styles from '../styles/Home.module.css'
-import FeaturedProperties from '../components/FeaturedProperties'
 // import PropertyGrid from '../components/PropertiesGrid'
 
 export const getStaticProps = async () => {

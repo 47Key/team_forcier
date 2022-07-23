@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import PropertiesByCity from './pull-city';
-import PropertiesDefault from './pull_data';
+import PropertiesByCity from '../components/pull-city';
+import PropertiesDefault from '../components/pull_data';
 import styles from '../styles/Properties.module.css';
 
 export default function PropertyGrid({ propertiesWin, propertiesTec, propertiesLas, propertiesAmh, propertiesEss, propertiesDef }) {
