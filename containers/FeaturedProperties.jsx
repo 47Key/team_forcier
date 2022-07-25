@@ -12,9 +12,9 @@ const FeaturedProperties = ({ properties }) => {
 
     if (window.innerWidth > 800) {
       if (direction == 'left') {
-        current.scrollLeft -= (window.innerWidth * 0.85);
+        current.scrollLeft -= (window.innerWidth * 0.9);
       } else {
-        current.scrollLeft += (window.innerWidth * 0.85);
+        current.scrollLeft += (window.innerWidth * 0.9);
       }
     } else if (window.innerWidth <= 800) {
       if (direction == 'left') {

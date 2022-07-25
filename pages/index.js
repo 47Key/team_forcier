@@ -3,7 +3,7 @@ import NavBar from '../containers/navbar'
 import Hero from '../containers/hero'
 import FeaturedProperties from '../containers/FeaturedProperties'
 import styles from '../styles/Home.module.css'
-// import PropertyGrid from '../components/PropertiesGrid'
+import PropertyGrid from '../containers/PropertiesGrid'
 
 export const getStaticProps = async () => {
   const responseDef = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="$key"&limitToFirst=5`);
@@ -11,48 +11,48 @@ export const getStaticProps = async () => {
   const parsedDataDef = JSON.parse(getDataDef);
   const keyNameDef = Object.entries(parsedDataDef);
 
-  // const responseWin = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Windsor"`);
-  // const getDataWin = await responseWin.text();
-  // const parsedDataWin = JSON.parse(getDataWin);
-  // const keyNameWin = Object.entries(parsedDataWin);
+  const responseWin = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Windsor"`);
+  const getDataWin = await responseWin.text();
+  const parsedDataWin = JSON.parse(getDataWin);
+  const keyNameWin = Object.entries(parsedDataWin);
 
-  // const responseTec = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Tecumseh"`);
-  // const getDataTec = await responseTec.text();
-  // const parsedDataTec = JSON.parse(getDataTec);
-  // const keyNameTec = Object.entries(parsedDataTec);
+  const responseTec = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Tecumseh"`);
+  const getDataTec = await responseTec.text();
+  const parsedDataTec = JSON.parse(getDataTec);
+  const keyNameTec = Object.entries(parsedDataTec);
 
-  // const responseEss = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Essex"`);
-  // const getDataEss = await responseEss.text();
-  // const parsedDataEss = JSON.parse(getDataEss);
-  // const keyNameEss = Object.entries(parsedDataEss);
+  const responseEss = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Essex"`);
+  const getDataEss = await responseEss.text();
+  const parsedDataEss = JSON.parse(getDataEss);
+  const keyNameEss = Object.entries(parsedDataEss);
 
-  // const responseLas = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Lasalle"`);
-  // const getDataLas = await responseLas.text();
-  // const parsedDataLas = JSON.parse(getDataLas);
-  // const keyNameLas = Object.entries(parsedDataLas);
+  const responseLas = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Lasalle"`);
+  const getDataLas = await responseLas.text();
+  const parsedDataLas = JSON.parse(getDataLas);
+  const keyNameLas = Object.entries(parsedDataLas);
 
-  // const responseAmh = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Amherstburg"`);
-  // const getDataAmh = await responseAmh.text();
-  // const parsedDataAmh = JSON.parse(getDataAmh);
-  // const keyNameAmh = Object.entries(parsedDataAmh);
+  const responseAmh = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/PropertyGrid.json?orderBy="city"&equalTo="Amherstburg"`);
+  const getDataAmh = await responseAmh.text();
+  const parsedDataAmh = JSON.parse(getDataAmh);
+  const keyNameAmh = Object.entries(parsedDataAmh);
   
   return {
     props: { 
-      // propertiesWin: keyNameWin,
-      // propertiesTec: keyNameTec, 
-      // propertiesEss: keyNameEss, 
-      // propertiesLas: keyNameLas, 
-      // propertiesAmh: keyNameAmh,
+      propertiesWin: keyNameWin,
+      propertiesTec: keyNameTec, 
+      propertiesEss: keyNameEss, 
+      propertiesLas: keyNameLas, 
+      propertiesAmh: keyNameAmh,
       propertiesDef: keyNameDef,  
     }
   }
 }
 export default function Home({ 
-  // propertiesWin,
-  // propertiesTec,
-  // propertiesEss,
-  // propertiesLas,
-  // propertiesAmh,
+  propertiesWin,
+  propertiesTec,
+  propertiesEss,
+  propertiesLas,
+  propertiesAmh,
   propertiesDef 
 }) {
   return (
@@ -66,7 +66,7 @@ export default function Home({
       <NavBar />
       <Hero />
       <FeaturedProperties properties={propertiesDef} />
-      {/* <PropertyGrid propertiesDef={propertiesDef} propertiesWin={propertiesWin} propertiesTec={propertiesTec} propertiesLas={propertiesLas} propertiesAmh={propertiesAmh} propertiesEss={propertiesEss} /> */}
+      <PropertyGrid propertiesDef={propertiesDef} propertiesWin={propertiesWin} propertiesTec={propertiesTec} propertiesLas={propertiesLas} propertiesAmh={propertiesAmh} propertiesEss={propertiesEss} />
 
       <footer className={styles.footer}>
         <h1>Work by Key the Dev</h1>
