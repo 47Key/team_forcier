@@ -18,9 +18,9 @@ const PropertyEvaluation = () => {
                 </div>
                 :
                 <div className={styles.propEvalModal}>
-                  <FiXCircle className={styles.propEvalIcon} onClick={() => {setModal(false)}} size={20} />
                   <div className={styles.propEvalText}>
                     <p>What we need to know</p>
+                    <FiXCircle className={styles.propEvalIcon} onClick={() => {setModal(false)}} size={30} />
                   </div>
                   <div className={styles.propEvalModalInput}>
                     <label for="fname">First Name:</label>
@@ -32,11 +32,13 @@ const PropertyEvaluation = () => {
                     <label for="number">Phone Number:</label>
                     <input type="string" id="number"/>
                     
-                    <label for="home-eval">Choose a Option:</label>
+                    <label for="home-eval">Choose an Option: </label>
                       <select id="home-eval">
-                        <option>Buying</option>
-                        <option>Selling</option>
-                        <option>Renting</option>
+                        {/* <option>Buying</option> */}
+                        <FiXCircle />
+                        {/* <option>Selling</option> */}
+                        
+                        {/* <option>Renting</option> */}
                       </select>                  
                   </div>
                 </div>

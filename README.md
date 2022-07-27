@@ -1,5 +1,15 @@
-* Still in development
+# Website for a Real Estate Team/Agent
 
-* Will need to reconfigure RETS client to support v2 functions, ignore the app.listen() function at the end of file, it will be taken care of automatically by FB. If that doesn't work, will have to host the app standalone with a docker image in AWS.
+* Pre-built website for a real estate team, or individual agent, to implement their own listings or listing from a national shared pool.
 
-* All data sanitization has been moved into one function on the rets_ddf repo, will need to debug the v2 function set up again. Moved accounts to new email, will need to set up db still.
+
+### Todo
+
+* Finish individual property page and url params for MLS# in the slug.
+* Optimize hero image, and property images if possible. Hero image can be optimized with slight tweaks in adobe photoshop.
+
+--------------------------------------------------------------------------
+
+* Implement db auth, data is not important but still would be good practice.
+* Implement dark mode (maybe)
+* Finish modal styling, still needs a touch up.

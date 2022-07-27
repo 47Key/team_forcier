@@ -3,15 +3,17 @@ import styles from '../styles/Home.module.css';
 import { FiMenu, FiXCircle } from 'react-icons/fi';
 
 const NavBar = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState(true);
 
-  useEffect(() => {
-    if (window.innerWidth >= 800) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  }, [])    
+  // useEffect(() => {
+  //   if (window.innerWidth >= 800) {
+  //     setDropdown(false);
+  //   } else {
+  //     setDropdown(true);
+  //   }
+  // }, [])
+  // Looks better without an automatic screen size adjustment, leaving dropdown state as true default blends better with the site.
+
       return (
         <div className={styles.navbar}>
           <div className={styles.logo}>

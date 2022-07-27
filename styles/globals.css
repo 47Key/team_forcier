@@ -4,3 +4,7 @@
     --font-main: 'Poppins', sans-serif;
     background-color: #fafafa;
 }
+
+body {
+    margin: 0px;
+}
