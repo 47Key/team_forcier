@@ -46,7 +46,7 @@ const FeaturedProperties = ({ properties }) => {
                   <div className={styles.featuredlistinfo}>
                     <div className={styles.featuredlistinfotop}>
                       <p>{value.city}</p>
-                      <h1 id="price">{new Intl.NumberFormat('en-US', { 
+                      <h1 id={styles.featuredPrice}>{new Intl.NumberFormat('en-US', { 
                       style: 'currency', 
                       currency: 'USD' 
                       }).format(value.price).slice(0, -3)}</h1>
@@ -76,10 +76,10 @@ const FeaturedProperties = ({ properties }) => {
           },
         )}
         </div>
-        {/* <button>View all Properties</button> */}
       </div>
       <div className={styles.scrollarrow}>
         <BsArrowLeftShort className={styles.featuredscrollbutton} onClick={() => scroll('left')} size={40} />
+        <button className={styles.moreinfobutton} href="all-properties">View All Properties</button>
         <BsArrowRightShort className={styles.featuredscrollbutton} onClick={() => scroll('right')} size={40} />
       </div>
     </div>

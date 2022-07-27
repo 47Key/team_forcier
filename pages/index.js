@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import NavBar from '../containers/navbar'
-import Hero from '../containers/hero'
+import NavBar from '../containers/Navbar'
+import Hero from '../containers/Hero'
 import FeaturedProperties from '../containers/FeaturedProperties'
 import styles from '../styles/Home.module.css'
 import PropertyGrid from '../containers/PropertiesGrid'
+import PropertyEvaluation from '../containers/PropertyEvaluation'
 
 export const getStaticProps = async () => {
-  const responseDef = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="$key"&limitToFirst=5`);
+  const responseDef = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="$key"&limitToFirst=10`);
   const getDataDef = await responseDef.text();
   const parsedDataDef = JSON.parse(getDataDef);
   const keyNameDef = Object.entries(parsedDataDef);
@@ -65,8 +66,9 @@ export default function Home({
 
       <NavBar />
       <Hero />
-      <FeaturedProperties properties={propertiesDef} />
-      <PropertyGrid propertiesDef={propertiesDef} propertiesWin={propertiesWin} propertiesTec={propertiesTec} propertiesLas={propertiesLas} propertiesAmh={propertiesAmh} propertiesEss={propertiesEss} />
+      <FeaturedProperties loading="lazy" properties={propertiesDef} />
+      <PropertyEvaluation />
+      <PropertyGrid loading="lazy" propertiesDef={propertiesDef} propertiesWin={propertiesWin} propertiesTec={propertiesTec} propertiesLas={propertiesLas} propertiesAmh={propertiesAmh} propertiesEss={propertiesEss} />
 
       <footer className={styles.footer}>
         <h1>Work by Key the Dev</h1>

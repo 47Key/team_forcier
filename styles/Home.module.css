@@ -33,6 +33,11 @@
   z-index: 10;
 }
 
+.dropDownIcon:hover {
+  transform: rotate(180deg) scale(1.2);
+  transition: 0.5s;
+}
+
 .navLinks {
   display: flex;
   flex-direction: row;

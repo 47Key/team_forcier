@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PropertiesByCity from './pull-city';
+import PropertiesByCity from '../components/pull-city';
 import PropertiesDefault from './pull_data';
 import styles from '../styles/Properties.module.css';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from '@chakra-ui/react'

@@ -100,6 +100,10 @@
   justify-content: space-between;
 }
 
+#featuredPrice {
+  margin-right: -60px;
+}
+
 .featuredlistinfotop p {
   font-size: medium;
   margin-top: -5px;
@@ -119,12 +123,12 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 200px;
-  left: 25px;
+  justify-content: center !important;
+  align-items: space-between !important;
+  width: 100%;
+  height: 70px;
   z-index: 3;
-  padding: 10px;
+  margin-top: 45px;
 }
 .featuredlistinfo .featuredlistinfowrap {
   justify-content: flex-end;
@@ -135,6 +139,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-left: 40px;
 }
 
 .featuredlistinfobb h1 {
@@ -146,15 +151,16 @@
   margin-top: -5px;
   padding-right: 10px;
   padding-left: 10px;
+  font-size: 14px;
 }
 
 .moreinfobuttonwrap {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
 }
 
 .moreinfobutton {
@@ -175,6 +181,7 @@
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
+  margin: 10px;
   cursor: pointer;
   background-color: #fafafa;
 }
@@ -203,7 +210,6 @@
 
   .featuredlistwrap {
     flex-wrap: wrap;
-    height: 100%;
     width: 100%;
   }
 
@@ -230,15 +236,23 @@
     padding: 0px;
   }
 
+  .moreinfobutton {
+    margin: 10px;
+  }
+
 }
 
 @media only screen and (max-width: 1100px) {
   .featuredlistwrap {
-    margin-left: 0px;
+    margin-left: 30px;
   }
 }
 
 @media only screen and (max-width: 900px) {
+  .featuredlistwrap {
+    margin-left: 10px;
+  }
+  
   .featuredpropphoto img {
     width: 700px;
     height: 350px;
@@ -255,6 +269,12 @@
 
 @media only screen and (max-width: 500px) {
 
+  .featuredlistwrap {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
   .featuredlistinfo {
     justify-content: center;
   }
@@ -262,6 +282,10 @@
   .featuredpropphoto img {
     width: 400px;
     height: 100%;
+  }
+
+  #featuredPrice {
+    margin-right: 0px;
   }
 
   .moreinfobuttonwrap {
@@ -272,22 +296,90 @@
 @media only screen and (max-width: 420px) {
   .featuredlistwrap {
     width: 100%;
-    margin-right: 10px;
+    margin-right: 30px;
+    margin-left: 0px;
+  }
+  
+  .featuredpropphoto img {
+    width: 100%;
+    height: 100%;
   }
 }
+
+/*/////////////////////////////////*/
+/*////// PROPERTY EVALUATION //////*/
+/*/////////////////////////////////*/
+
+.propEvalWrap {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #fafafa;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0px;
+}
+
+.propEvalContain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+  border-radius: 10px;
+  background-color: #e41935;
+}
+
+.propEvalText {
+  font-family: var(--font-card);
+  font-size: 50px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.propEvalIcon {
+  position: relative;
+  left: 100px;
+}
+
+.propEvalIcon:hover {
+  transform: rotate(-360deg) scale(1.8);
+  transition: 0.5s;
+}
+
+.propEvalModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: 0.2s;
+  margin-bottom: 100px;
+} 
+
+.propEvalModalInput input {
+  margin: 0px 20px 0px 5px;
+  border: none;
+}
+
 
 /*/////////////////////////////////*/
 /*//// PROPERTY GRID (WRAPPER) ////*/
 /*/////////////////////////////////*/
 
 .propwrap {
-    height: 100%;
     width: 100%;
+    height: 50vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     background-color: #fafafa;
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
     font-family: var(--font-main);
@@ -297,7 +389,7 @@
     width: 100%;
     height: 100%;
     background-color: #fafafa;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -334,16 +426,35 @@
     font-weight: 800;
     border: 0.1px;
     transition: 0.3s;
-}
-
-.property-options__container-city-button:hover {
-    box-shadow: 0 5px 15px rgb(0 0 0 / 0.5);
-    padding-bottom: 10px;
+    cursor: pointer;
 }
 
 .propoptbutton:hover {
   color: #e41935;
   background-color: #ffffff;
+}
+
+.propGridScrollWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.propGridScrollContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin-bottom: 20px;
+  width: max-content;
+} 
+
+.propGridScrollWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 /*/////////////////////////////////*/
@@ -359,17 +470,17 @@
     text-align: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     font-size: 10px;
+    cursor: pointer;
   }
   
   .mapwrap {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll;
   }
   
   .listwrap:hover {
