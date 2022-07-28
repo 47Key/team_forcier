@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { FaBed, FaBath, FaWindowClose } from 'react-icons/fa';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import styles from '../../styles/Properties.module.css';
-import { Navbar } from '../../containers/Navbar';
+import { NavBar } from '../../containers/Navbar';
 
-export const getServerSideProps = async () => {
-  const id = React.useParams();
-  const response = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="listingId"&equalTo=${id}`);
+export const getStaticProps = async () => {
+//   const id = React.useParams();
+  const response = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="listingId"&equalTo="22008990"`);
   const getData = await response.text();
   const parsedData = JSON.parse(getData);
   const indPropDetails = Object.entries(parsedData);
@@ -14,77 +14,58 @@ export const getServerSideProps = async () => {
   return {
     props: { 
       indPropDetails: indPropDetails,
-    }
+    },
   }
 }
 
 
 const IndividualProperty = ({ indPropDetails }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+//   const [modalOpen, setModalOpen] = useState(false);
 
-  function openModal() {
-    setModalOpen(true);
-  }
-  function closeModal() {
-    setModalOpen(false);
-  }
+//   function openModal() {
+//     setModalOpen(true);
+//   }
+//   function closeModal() {
+//     setModalOpen(false);
+//   }
 
-  const scrollRef = React.useRef(null);
-  const scroll = (direction) => {
-  const { current } = scrollRef;
-    if (direction === 'left') {
-      current.scrollLeft -= 300;
-    } else {
-      current.scrollLeft += 300;
-    }
-  };
+  // const scrollRef = React.useRef(null);
+  // const scroll = (direction) => {
+  // const { current } = scrollRef;
+  //   if (direction === 'left') {
+  //     current.scrollLeft -= 300;
+  //   } else {
+  //     current.scrollLeft += 300;
+  //   }
+  // };
 
   const data = indPropDetails;
+  console.log(data[0]);
   const price = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(data.price);
 
-  const [mainPicture, setMainPicture] = useState(data.mainPhoto);
+  // const [mainPicture, setMainPicture] = useState(data.mainPhoto);
+
 
   return (
     <div className={styles.indListAppWrap}>
-      <Navbar />
-      {/* <Modal
-        className="individual-listing__modal"
-        isOpen={modalOpen}
-        onClose={closeModal}
-        >
-        <div className="modal-content">
-          <div className="modal-content__header">
-            <h2>Book a Viewing</h2>
-            <FaWindowClose id="modal-close" onClick={closeModal} size={25} />
-          </div>
-          <div className="modal-content__details">
-            <p id="modal-details">You are requesting more information about: {data.address}</p>
-            <input id="modal-details__input" placeholder="First Name" />
-            <input id="modal-details__input" placeholder="Last Name" />
-            <input id="modal-details__input" placeholder="Phone Number" />
-            <input id="modal-details__input" placeholder="Email Address" />
-            <div className="modal__submit-button__wrapper">
-              <button type="submit" className="modal__submit-button">SUBMIT</button>
-            </div>
-          </div>
-        </div>
-      </Modal> */}
       <div className={styles.indListWrap}>
         <div className={styles.indListInfo}>
-          <img src={mainPicture} />
-          <div className={styles.indListPhotoRow} ref={scrollRef}>
-            {data.otherPhotos.map((otherPhotos, key) => <img key={key} id="img-tray" onClick={() => setMainPicture(otherPhotos)} src={otherPhotos} />)}
+          <img src={data.mainPicture} />
+          <div className={styles.indListPhotoRow}
+          // ref={scrollRef}
+          >
+            {/* {data.otherPhotos.map((otherPhotos, key) => <img key={key} id="img-tray" onClick={() => setMainPicture(otherPhotos)} src={otherPhotos} />)} */}
           </div>
           <div className="img-tray__scroll">
-            <BsArrowLeftShort className={styles.indListScrollArrow} id="scroll-left" onClick={() => scroll('left')} />
-            <BsArrowRightShort className={styles.indListScrollArrow} id="scroll-right" onClick={() => scroll('right')} />
+            <BsArrowLeftShort className={styles.indListScrollArrow} id="scroll-left" />
+            <BsArrowRightShort className={styles.indListScrollArrow} id="scroll-right" />
           </div>
           <div className={styles.indListInfoDet}>
             <div className={styles.indListInfoProp}>
-              <h1>{priceAfterFormat.slice(0, -3)}</h1>
+              <h1>{price.slice(0, -3)}</h1>
               <h2>{data.address}</h2>
               <h2>{data.city}</h2>
               <p>MLS#{data.listingId}</p>
@@ -102,7 +83,7 @@ const IndividualProperty = ({ indPropDetails }) => {
               </div>
             </div>
             <div className={styles.indListInfBtnWrap}>
-            <button type="button" className={styles.indListInfBtn} onClick={openModal}>
+            <button type="button" className={styles.indListInfBtn}>
                 Schedule a Viewing
               </button>
             </div>
@@ -168,7 +149,7 @@ const IndividualProperty = ({ indPropDetails }) => {
             </div>
           </div>
           <div className={styles.indListInfDetBtm}>
-            <iframe
+            {/* <iframe
               title="property-map"
               width="100%"
               height="500"
@@ -179,7 +160,7 @@ const IndividualProperty = ({ indPropDetails }) => {
               &q=${data.latitude}, ${data.longitude}
               &zoom=18
               &center=${data.latitude}, ${data.longitude}`}
-              />
+              /> */}
           </div>
           <div className={styles.indListInfDetBtm}>
             <div className={styles.indListInfDetBtmDesc}>
@@ -191,14 +172,14 @@ const IndividualProperty = ({ indPropDetails }) => {
               >
               <div className={styles.indListPropDetInd}>
                 <h4>Bedrooms</h4>
-                <p>{data.bedroomTotal}</p>
+                <p>{data.bedroomsTotal}</p>
               </div>
               <div id={styles.indListLine}>
                 <hr id={styles.indListBreak}/>
               </div>
               <div className={styles.indListPropDetInd}>
                 <h4>Bathrooms</h4>
-                <p>{data.bathroomTotal}</p>
+                <p>{data.bathroomsTotal}</p>
               </div>
               <div id={styles.indListLine}>
                 <hr id={styles.indListBreak}/>
@@ -208,11 +189,11 @@ const IndividualProperty = ({ indPropDetails }) => {
                 <div className={styles.indListPropDetIndHead}>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Applicances</h5>
-                    <p>{data.interiorFeatures.appliances}</p>
+                    <p>{data.appliances}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Flooring</h5>
-                    <p>{data.interiorFeatures.flooring}</p>
+                    <p>{data.flooring}</p>
                   </div>
                 </div>
               </div>
@@ -224,23 +205,23 @@ const IndividualProperty = ({ indPropDetails }) => {
                 <div className={styles.indListPropDetIndHead}>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Exterior Finish</h5>
-                    <p>{data.buildingFeatures.exteriorFinish}</p>
+                    <p>{data.exteriorFinish}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Foundation</h5>
-                    <p>{data.buildingFeatures.foundationType}</p>
+                    <p>{data.foundationType}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Pool</h5>
-                    <p>{data.buildingFeatures.pool}</p>
+                    <p>{data.pool}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Zoning</h5>
-                    <p>{data.buildingFeatures.zoning}</p>
+                    <p>{data.zoning}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Features</h5>
-                    <p>{data.buildingFeatures.features}</p>
+                    <p>{data.features}</p>
                   </div>
                 </div>
               </div>
@@ -252,11 +233,11 @@ const IndividualProperty = ({ indPropDetails }) => {
                 <div className={styles.indListPropDetIndHead}>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Heating Type</h5>
-                    <p>{data.buildingFeatures.heatingType}</p>
+                    <p>{data.heatingType}</p>
                   </div>
                   <div className={styles.indListPropDetIndSub}>
                     <h5>Cooling Type</h5>
-                    <p>{data.buildingFeatures.coolingType}</p>
+                    <p>{data.coolingType}</p>
                   </div>
                 </div>
               </div>
