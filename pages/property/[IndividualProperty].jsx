@@ -39,51 +39,14 @@ const IndividualProperty = ({ indPropDetails }) => {
     }
   };
 
-  const preData = indPropDetails;
-  const price = preData.price;
-  const priceAfterFormat = new Intl.NumberFormat('en-US', {
+  const data = indPropDetails;
+  const price = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(price);
-  // const data = {
-  //   mainPhoto: preData.Photo.PropertyPhoto[0].LargePhotoURL,
-  //   otherPhotos: preData.Photo.PropertyPhoto,
-  //   address: `${preData.Address.StreetNumber} ${preData.Address.StreetName}`,
-  //   bathroomTotal: preData.Building.BathroomTotal,
-  //   bedroomTotal: preData.Building.BedroomsTotal,
-  //   price: priceAfterFormat.slice(0, -3),
-  //   city: preData.Address.City,
-  //   description: preData.PublicRemarks,
-  //   listingID: preData.ListingID,
-  //   buildingSqFt: preData.Building.TotalFinishedArea,
-  //   propertyType: preData.PropertyType,
-  //   buildingType:
-  //   `${preData.Building.Type} ${preData.Building.ConstructionStyleAttachment}`,
-  //   stories: preData.Building.StoriesTotal,
-  //   title: preData.OwnershipType,
-  //   landSize: preData.Land.SizeTotalText,
-  //   buildDate: preData.Building.ConstructedDate,
-  //   parkingType:
-  //   `${preData.ParkingSpaces.Parking[0].Name} ${preData.ParkingSpaces.Parking[1].Name}`,
-  //   latitude: preData.Address.Latitude,
-  //   longitude: preData.Address.Longitude,
-  //   interiorFeatures: {
-  //     appliances: preData.Building.Appliances,
-  //     flooring: preData.Building.FlooringType,
-  //     fireplace: preData.Building.FireplacePresent,
-  //   },
-  //   buildingFeatures: {
-  //     exteriorFinish: preData.Building.ExteriorFinish,
-  //     heatingType:
-  //     `${preData.Building.HeatingType} ${preData.Building.HeatingFuel}`,
-  //     coolingType: preData.Building.CoolingType,
-  //     foundationType: preData.Building.FoundationType,
-  //     features: preData.Features,
-  //     pool: preData.PoolType,
-  //   zoning: preData.ZoningDescription,
-  //   },
-  // };
+  }).format(data.price);
+
   const [mainPicture, setMainPicture] = useState(data.mainPhoto);
+
   return (
     <div className={styles.indListAppWrap}>
       <Navbar />
@@ -113,7 +76,7 @@ const IndividualProperty = ({ indPropDetails }) => {
         <div className={styles.indListInfo}>
           <img src={mainPicture} />
           <div className={styles.indListPhotoRow} ref={scrollRef}>
-            {data.otherPhotos.map((otherPhotos, key) => <img key={key} id="img-tray" onClick={() => setMainPicture(otherPhotos.LargePhotoURL)} src={otherPhotos.LargePhotoURL} />)}
+            {data.otherPhotos.map((otherPhotos, key) => <img key={key} id="img-tray" onClick={() => setMainPicture(otherPhotos)} src={otherPhotos} />)}
           </div>
           <div className="img-tray__scroll">
             <BsArrowLeftShort className={styles.indListScrollArrow} id="scroll-left" onClick={() => scroll('left')} />
@@ -124,17 +87,17 @@ const IndividualProperty = ({ indPropDetails }) => {
               <h1>{priceAfterFormat.slice(0, -3)}</h1>
               <h2>{data.address}</h2>
               <h2>{data.city}</h2>
-              <p>MLS#{data.listingID}</p>
+              <p>MLS#{data.listingId}</p>
             </div>
             <div className={styles.indListInfoBedbath}>
               <div className={styles.indListBedbath}>
                 <FaBed className={styles.indListIcon} size={25} />
-                <p id={styles.indListBbVal}>{data.bedroomTotal}</p>
+                <p id={styles.indListBbVal}>{data.bedroomsTotal}</p>
                 <h1 id={styles.indListBbTitle}>Beds</h1>
               </div>
               <div className={styles.indListBedBath}>
                 <FaBath className={styles.indListIcon} size={25} />
-                <p id={styles.indListBbVal}>{data.bathroomTotal}</p>
+                <p id={styles.indListBbVal}>{data.bathroomsTotal}</p>
                 <h1 id={styles.indListBbTitle}>Baths</h1>
               </div>
             </div>
