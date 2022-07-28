@@ -3,6 +3,7 @@
 :root {
     --font-main: 'Poppins', sans-serif;
     background-color: #fafafa;
+    font-family: var(--font-main);
 }
 
 body {
