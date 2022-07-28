@@ -37,9 +37,9 @@ const IndividualProperty = ({ indProp }) => {
   const scroll = (direction) => {
     const { current } = scrollRef;
     if (direction === 'left') {
-      current.scrollLeft -= 300;
+      current.scrollLeft -= (window.innerWidth * 0.8);
     } else {
-      current.scrollLeft += 300;
+      current.scrollLeft += (window.innerWidth * 0.8);
     }
   };
 
@@ -56,8 +56,8 @@ const IndividualProperty = ({ indProp }) => {
       <div className={styles.indListAppWrap}>
         <div className={styles.indListWrap}>
           <div className={styles.indListInfo}>
-            <img src={`${mainPhoto}`} />
-            <div className={styles.indListPhotoRow} ref={scrollRef}>
+            <img loading="lazy" src={`${mainPhoto}`} />
+            <div loading="lazy" className={styles.indListPhotoRow} ref={scrollRef}>
               {otherPhotos.map(photo => <img key={photo} id={styles.imgTray} onClick={() => setMainPhoto(photo)} src={photo} />)}
             </div>
             <div className={styles.imgTrayScroll}>
@@ -67,24 +67,26 @@ const IndividualProperty = ({ indProp }) => {
             <div className={styles.indListInfoDet}>
               <div className={styles.indListInfoProp}>
                 <h1>{priceAfterFormat.slice(0, -3)}</h1>
-                <h2>{data.address}</h2>
-                <h2>{data.city}</h2>
-                <p>MLS#{data.listingId}</p>
+                <h2 id={styles.indListAddress}>{data.address}</h2>
               </div>
               <div className={styles.indListInfoBedbath}>
                 <div className={styles.indListBedbath}>
                   <FaBed className={styles.indListIcon} size={25} />
                   <p id={styles.indListBbVal}>{data.bedroomsTotal}</p>
-                  <h1 id={styles.indListBbTitle}>Beds</h1>
+                  <h1 id={styles.indListBbTitle}>Bedroomss</h1>
                 </div>
                 <div className={styles.indListBedbath}>
                   <FaBath className={styles.indListIcon} size={25} />
                   <p id={styles.indListBbVal}>{data.bathroomsTotal}</p>
-                  <h1 id={styles.indListBbTitle}>Baths</h1>
+                  <h1 id={styles.indListBbTitle}>Bathrooms</h1>
                 </div>
               </div>
-              <div className={styles.indListInfBtnWrap}>
-              <button type="button" className={styles.indListInfBtn}>
+              <div className={styles.indListInfoBtnWrap}>
+                <div className={styles.indListCity}>
+                  <h2 id={styles.indListCity}>{data.city}</h2>
+                  <p>MLS#{data.listingId}</p>
+                </div>
+                <button type="button" className={styles.indListInfoDetBtn}>
                   Schedule a Viewing
                 </button>
               </div>
@@ -128,39 +130,40 @@ const IndividualProperty = ({ indProp }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.indListInfDetBtm}>
-              {/* <iframe
+            <div className={styles.indListInfoDetBtm}>
+              <iframe
                 title="property-map"
-                width="100%"
                 height="500"
                 style={{ border: 0 }}
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDplpVKhZszhYAMTaGKLlTqPhXSX2YVCbI
                 &q=${data.latitude}, ${data.longitude}
-                &zoom=18
+                &zoom=15
                 &center=${data.latitude}, ${data.longitude}`}
-                /> */}
+                />
             </div>
             <div className={styles.indListInfoDetBtm}>
               <div className={styles.indListInfoDetBtmDesc}>
                 <h1>Building Features</h1>
               </div>
-              <div
-                id={styles.indListBuildDesc}
-                className={styles.indListInfDetBtmSum}
-                >
+              <div id={styles.indListBuildDesc} className={styles.indListInfDetBtmSum} >
                 <div className={styles.indListPropDetInd}>
-                  <h4>Bedrooms</h4>
-                  <p>{data.bedroomsTotal}</p>
+                  <div className={styles.indListPropDetIndHead}>
+                    <div className={styles.indListPropDetIndSub}>
+                      <h4>Bedrooms</h4>
+                      <p>{data.bedroomsTotal}</p>
+                    </div>
+                    <div className={styles.indListPropDetIndSub}>
+                      <h4>Bathrooms</h4>
+                      <p>{data.bathroomsTotal}</p>
+                    </div>
+                  </div>
                 </div>
-                <div id={styles.indListLine}>
+                {/* <div id={styles.indListLine}>
                   <hr id={styles.indListBreak}/>
                 </div>
                 <div className={styles.indListPropDetInd}>
-                  <h4>Bathrooms</h4>
-                  <p>{data.bathroomsTotal}</p>
-                </div>
+                </div> */}
                 <div id={styles.indListLine}>
                   <hr id={styles.indListBreak}/>
                 </div>
