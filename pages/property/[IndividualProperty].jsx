@@ -1,20 +1,34 @@
 import React, { useState } from 'react';
-// import { useLocation } from 'react-router-dom';
 import { FaBed, FaBath, FaWindowClose } from 'react-icons/fa';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import styles from '../../styles/Properties.module.css';
-// import Modal from 'react-modal';
 import { Navbar } from '../../containers/Navbar';
-import './IndividualProperty.css';
 
-const IndividualProperty = () => {
+export const getServerSideProps = async () => {
+  const id = React.useParams();
+  const response = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="listingId"&equalTo=${id}`);
+  const getData = await response.text();
+  const parsedData = JSON.parse(getData);
+  const indPropDetails = Object.entries(parsedData);
+
+  return {
+    props: { 
+      indPropDetails: indPropDetails,
+    }
+  }
+}
+
+
+const IndividualProperty = ({ indPropDetails }) => {
   const [modalOpen, setModalOpen] = useState(false);
+
   function openModal() {
     setModalOpen(true);
   }
   function closeModal() {
     setModalOpen(false);
   }
+
   const scrollRef = React.useRef(null);
   const scroll = (direction) => {
   const { current } = scrollRef;
@@ -24,51 +38,51 @@ const IndividualProperty = () => {
       current.scrollLeft += 300;
     }
   };
-//   const location = useLocation();
-//   const preData = location.state;
-  const price = preData.Price;
+
+  const preData = indPropDetails;
+  const price = preData.price;
   const priceAfterFormat = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(price);
-  const data = {
-    mainPhoto: preData.Photo.PropertyPhoto[0].LargePhotoURL,
-    otherPhotos: preData.Photo.PropertyPhoto,
-    address: `${preData.Address.StreetNumber} ${preData.Address.StreetName}`,
-    bathroomTotal: preData.Building.BathroomTotal,
-    bedroomTotal: preData.Building.BedroomsTotal,
-    price: priceAfterFormat.slice(0, -3),
-    city: preData.Address.City,
-    description: preData.PublicRemarks,
-    listingID: preData.ListingID,
-    buildingSqFt: preData.Building.TotalFinishedArea,
-    propertyType: preData.PropertyType,
-    buildingType:
-    `${preData.Building.Type} ${preData.Building.ConstructionStyleAttachment}`,
-    stories: preData.Building.StoriesTotal,
-    title: preData.OwnershipType,
-    landSize: preData.Land.SizeTotalText,
-    buildDate: preData.Building.ConstructedDate,
-    parkingType:
-    `${preData.ParkingSpaces.Parking[0].Name} ${preData.ParkingSpaces.Parking[1].Name}`,
-    latitude: preData.Address.Latitude,
-    longitude: preData.Address.Longitude,
-    interiorFeatures: {
-      appliances: preData.Building.Appliances,
-      flooring: preData.Building.FlooringType,
-      fireplace: preData.Building.FireplacePresent,
-    },
-    buildingFeatures: {
-      exteriorFinish: preData.Building.ExteriorFinish,
-      heatingType:
-      `${preData.Building.HeatingType} ${preData.Building.HeatingFuel}`,
-      coolingType: preData.Building.CoolingType,
-      foundationType: preData.Building.FoundationType,
-      features: preData.Features,
-      pool: preData.PoolType,
-    zoning: preData.ZoningDescription,
-    },
-  };
+  // const data = {
+  //   mainPhoto: preData.Photo.PropertyPhoto[0].LargePhotoURL,
+  //   otherPhotos: preData.Photo.PropertyPhoto,
+  //   address: `${preData.Address.StreetNumber} ${preData.Address.StreetName}`,
+  //   bathroomTotal: preData.Building.BathroomTotal,
+  //   bedroomTotal: preData.Building.BedroomsTotal,
+  //   price: priceAfterFormat.slice(0, -3),
+  //   city: preData.Address.City,
+  //   description: preData.PublicRemarks,
+  //   listingID: preData.ListingID,
+  //   buildingSqFt: preData.Building.TotalFinishedArea,
+  //   propertyType: preData.PropertyType,
+  //   buildingType:
+  //   `${preData.Building.Type} ${preData.Building.ConstructionStyleAttachment}`,
+  //   stories: preData.Building.StoriesTotal,
+  //   title: preData.OwnershipType,
+  //   landSize: preData.Land.SizeTotalText,
+  //   buildDate: preData.Building.ConstructedDate,
+  //   parkingType:
+  //   `${preData.ParkingSpaces.Parking[0].Name} ${preData.ParkingSpaces.Parking[1].Name}`,
+  //   latitude: preData.Address.Latitude,
+  //   longitude: preData.Address.Longitude,
+  //   interiorFeatures: {
+  //     appliances: preData.Building.Appliances,
+  //     flooring: preData.Building.FlooringType,
+  //     fireplace: preData.Building.FireplacePresent,
+  //   },
+  //   buildingFeatures: {
+  //     exteriorFinish: preData.Building.ExteriorFinish,
+  //     heatingType:
+  //     `${preData.Building.HeatingType} ${preData.Building.HeatingFuel}`,
+  //     coolingType: preData.Building.CoolingType,
+  //     foundationType: preData.Building.FoundationType,
+  //     features: preData.Features,
+  //     pool: preData.PoolType,
+  //   zoning: preData.ZoningDescription,
+  //   },
+  // };
   const [mainPicture, setMainPicture] = useState(data.mainPhoto);
   return (
     <div className={styles.indListAppWrap}>
@@ -217,14 +231,14 @@ const IndividualProperty = () => {
                 <p>{data.bedroomTotal}</p>
               </div>
               <div id={styles.indListLine}>
-                <hr />
+                <hr id={styles.indListBreak}/>
               </div>
               <div className={styles.indListPropDetInd}>
                 <h4>Bathrooms</h4>
                 <p>{data.bathroomTotal}</p>
               </div>
               <div id={styles.indListLine}>
-                <hr />
+                <hr id={styles.indListBreak}/>
               </div>
               <div className={styles.indListPropDetInd}>
                 <h4>Interior Features</h4>
@@ -240,7 +254,7 @@ const IndividualProperty = () => {
                 </div>
               </div>
               <div id={styles.indListLine}>
-                <hr />
+                <hr id={styles.indListBreak}/>
               </div>
               <div className={styles.indListPropDetInd}>
                 <h4>Building Features</h4>
@@ -267,8 +281,8 @@ const IndividualProperty = () => {
                   </div>
                 </div>
               </div>
-              <div id="line">
-                <hr />
+              <div id={styles.indListLine}>
+                <hr id={styles.indListBreak}/>
               </div>
               <div className={styles.indListPropDetInd}>
                 <h4>Heating & Cooling</h4>

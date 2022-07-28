@@ -627,11 +627,12 @@
 /*////// INDIVIDUAL PROPERTY //////*/
 /*/////////////////////////////////*/
 
-* {
+/* * {
   font-family: var(--font-main);
-}
+} */
 
 .indListWrap {
+  font-family: var(--font-main);
   scroll-behavior: smooth;
   height: 100%;
   width: 100%;
@@ -746,17 +747,17 @@
   color: #222;
 }
 
-#bedbath-title {
+#indListBbTitle {
   font-size: 12px;
 }
 
-#bedbath-value {
+#indListBbVal {
   font-size: 20px;
   font-weight: 900;
 }
 
 
-.individual-listing__info-details-bottom {
+.indListInfoDetBtm {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -770,7 +771,7 @@
   border-radius: 0.5em;
 }
 
-hr {
+.indListBreak {
   border:none;
   height: 20px;
   width: 100%;
@@ -781,11 +782,11 @@ hr {
   margin: -40px auto 10px; 
 }
 
-#line {
+#indListline {
   width: 100%;
 }
 
-.individual-listing__info-details-bottom-description {
+.indListInfoDetBtmDesc {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -794,11 +795,11 @@ hr {
   margin-bottom: 10px;
 }
 
-#description-title {
+#indListDesc {
   margin-bottom: 10px;
 }
 
-.individual-listing__info-details-bottom-summary {
+.indListinfoDetBtmSum {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -808,12 +809,12 @@ hr {
   align-items: space-evenly;
 }
 
-.individual-listing__info-details-bottom-summary h3 {
+.indListinfoDetBtmSum h3 {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-#building-description {
+#indListBuildDesc {
   width: 100%;
   padding: 10px;
   display: flex;
@@ -822,11 +823,11 @@ hr {
 }
 
 
-#description-info {
+#indListDesInfo {
   text-align: center;
 }
 
-.individual-listing__info-details-button {
+.indListinfoDetBtn {
   background: #e41935;
   color: #ffffff;
   padding: 5px;
@@ -838,30 +839,29 @@ hr {
   transition: 0.5s;
 }
 
-.individual-listing__info-details-button:hover {
+.indListinfoDetBtn:hover {
   box-shadow: 0 3px 8px rgb(0 0 0 / 0.5);
   color: #e41935;
   background: #ffffff;
 }
 
-.property-details__individual {
+.indListPropDetInd {
   display: flex;
   flex-direction: column;
   margin: 10px;
 }
 
-.property-details__individual-subsection {
+.indListPropDetIndSub {
   flex-direction: column;
   width: 100%;
   padding: 5px;
 }
 
-.property-details__individual-header {
+.indListPropDetIndHead {
   display: flex;
   width: 100%;
   flex-direction: row;
 }
-
 
 
 /* ////////////////////////////////////////////////// */
@@ -963,22 +963,14 @@ hr {
 /* /////////////////   MODAL END  /////////////////// */
 /* ////////////////////////////////////////////////// */
 
-
-
-
-/* ////////////////////////////////////////////////// */
-/* ///////////////   MEDIA QUERIES   //////////////// */
-/* ////////////////////////////////////////////////// */
-
-
 @media screen and (max-width: 600px) {
-  .individual-listing__wrapper {
+  .indListWrap {
       padding: 0px;
       margin: 0px;
       width: 100%;
   }
 
-  .individual-listing__info img {
+  .indListInfo img {
       padding: 0px;
       margin: 0px;
       height: 100%;
@@ -989,40 +981,41 @@ hr {
       margin: 0px 2px;
   }
 
-  .individual-listing__info {
+  .indListInfo {
       margin: 0px;
       padding: 0px;
   }
-  .individual-listing__info-details {
+
+  .indListInfoDet {
       margin: 0px;
       padding: 0px;
       width: 100%;
       flex-direction: column;
   }
 
-  .individual-listing__info-bedbath {
+  .indListInfoBedbath {
       padding: 0px;
   }
 
-  #description-info {
+  #indListDescInfo {
       padding: 5px;
   }
 
-  .property-details__individual {
+  .indListPropDetInd {
       padding: 0px;
   }
 
-  .property-details__individual-header {
+  .indListPropDetIndHead {
       flex-wrap: wrap;
   }
 
-  hr {
+  .indListBreak {
       margin: 0px;
       padding: 0px;
       width: 100%;
   }
 
-  .individual-listing__app-wrapper {
+  .indListAppWrap {
       width: 100%;
       padding: 0px;
       margin: 0px;
