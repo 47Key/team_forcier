@@ -19,11 +19,12 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
 }
 
 .logo {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -31,6 +32,12 @@
   position: relative;
   right: 40px;
   z-index: 10;
+  background-color: #fafafa;
+
+}
+
+.dropDownIcon {
+  cursor: pointer;
 }
 
 .dropDownIcon:hover {
@@ -39,39 +46,59 @@
 }
 
 .navLinks {
+  padding-top: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
+  margin-bottom: -20px;
+  background-color: #fafafa;
 }
 
 .navLinks p {
   padding: 1em;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
+  
   .navLinks {
     flex-direction: column;
     background-color: white;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0px;
+    flex-wrap: wrap;
   }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 500px) {
   .navbar {
-    justify-content: center;
+    justify-content: space-between;
   }
   
   .navLinks {
     flex-wrap: wrap;
   }
 
-  .dropdown {
-    top: -10px;
-    left: 0px;
+  .dropDownIcon {
+    padding-left: 20px;
+    padding-top: 20px;
   }
+}
+
+@media only screen and (max-width: 350px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dropdown {
+    position: static;
+  }
+
 }
 
 /*/////////////////////////////////*/

@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { FaBed, FaBath, FaWindowClose } from 'react-icons/fa';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
-import styles from '../../styles/Properties.module.css';
-import '../../styles/Home.module.css';
-import NavBar from '../../containers/navbar';
+import styles from '../../../styles/Properties.module.css';
+import '../../../styles/Home.module.css';
+import NavBar from '../../../containers/Navbar'; 
+// import { useRouter } from 'next/router';
+
+// const check = () => {
+//   // const router = useRouter()
+//   console.log(useRouter());
+// }
+// check(); 
 
 export const getStaticProps = async () => {
 //   const id = React.useParams();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Properties.module.css';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
+import Link from 'next/link';
 // import Image from 'next/image'
 
 const FeaturedProperties = ({ properties }) => {
@@ -66,7 +67,9 @@ const FeaturedProperties = ({ properties }) => {
                     </div>
                   </div>
                   <div className={styles.moreinfobuttonwrap}>
-                    <button className={styles.moreinfobutton}>More Info</button>
+                    <Link href={`/property/${value.listingId}`}>
+                      <button className={styles.moreinfobutton}>More Info</button>
+                    </Link>
                   </div>
                 </div>
               );

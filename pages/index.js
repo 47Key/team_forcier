@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import NavBar from '../containers/Navbar'
-import Hero from '../containers/Hero'
-import FeaturedProperties from '../containers/FeaturedProperties'
-import styles from '../styles/Home.module.css'
-import PropertyGrid from '../containers/PropertiesGrid'
-import PropertyEvaluation from '../containers/PropertyEvaluation'
+import Head from 'next/head';
+import NavBar from '../containers/Navbar';
+import Hero from '../containers/Hero';
+import FeaturedProperties from '../containers/FeaturedProperties';
+import styles from '../styles/Home.module.css';
+import PropertyGrid from '../containers/PropertiesGrid';
+import PropertyEvaluation from '../containers/PropertyEvaluation';
 
 export const getStaticProps = async () => {
   const responseDef = await fetch(`https://teamforcier-default-rtdb.firebaseio.com/IndividualProperty.json?orderBy="$key"&limitToFirst=10`);
